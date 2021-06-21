@@ -1,5 +1,5 @@
 {
-  "name": "brazier",
+  "name": "@danieleisenhardt/brazier",
   "version": "0.1.0",
   "description": "a NodeJs framework for Firebase functions",
   "license": "MIT",
@@ -8,21 +8,18 @@
     "url": "git://github.com/danieleisenhardt/brazier"
   },
   "scripts": {
-    "build": "rimraf ./build && tsc"
+    "build": "rimraf ./build && tsc && cp package.json build"
   },
   "main": "build/index.js",
   "files": [
     "build"
   ],
-  "peerDependencies": {
+  "dependencies": {
     "express": "^4.17.1",
     "awilix": "^4.3.4",
     "awilix-express": "^4.0.0"
   },
   "devDependencies": {
-    "express": "^4.17.1",
-    "awilix": "^4.3.4",
-    "awilix-express": "^4.0.0",
     "@types/express": "^4.17.11",
     "@types/node": "^15.0.2",
     "rimraf": "^3.0.2",

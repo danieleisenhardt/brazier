@@ -1,5 +1,5 @@
-import Request from '../interface/Request';
-import Response from '../interface/Response';
+import Request from '../routing/interface/Request';
+import Response from '../routing/interface/Response';
 
 export default abstract class ApiMiddleware {
 
