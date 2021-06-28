@@ -1,0 +1,17 @@
+import {AppConfig} from 'brazier';
+
+const buildDir = 'lib';
+
+export const appConfig: AppConfig = {
+    serviceAccountPath: '../key/INSERT_YOUR_KEY_FILENAME_HERE.json',
+    databaseURL: 'https://INSERT_YOUR_APP_NAME_HERE.firebaseio.com',
+    buildDir: buildDir,
+    autoloadPaths: [
+        buildDir + '/controller/**/*.js',
+        buildDir + '/middleware/**/*.js',
+        buildDir + '/repository/**/*.js',
+        buildDir + '/request/**/*.js',
+        buildDir + '/service/**/*.js',
+        buildDir + '/transformer/**/*.js',
+    ]
+};

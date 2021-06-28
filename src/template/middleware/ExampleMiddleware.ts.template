@@ -1,0 +1,8 @@
+import {ApiMiddleware, Request, Response} from 'brazier';
+
+export default class ExampleMiddleware extends ApiMiddleware {
+    public async handle(request: Request, response: Response, next: () => void) {
+        console.log('ExampleMiddleware was called');
+        next();
+    }
+}

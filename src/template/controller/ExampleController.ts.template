@@ -1,0 +1,11 @@
+import {Request, Response} from 'brazier';
+
+export default class ExampleController {
+    constructor(
+    ) {
+    }
+
+    public async helloWorld(request: Request, response: Response) {
+        response.json({message: 'Hello World!'});
+    }
+}

@@ -31,7 +31,7 @@ After this is done go to the functions dir created by Firebase CLI and install b
 ```
 cd functions
 npm -i @danieleisenhardt/brazier
-brazier init //TODO
+node_modules/brazier/script/init.js
 ```
 
 ### Controllers

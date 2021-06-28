@@ -1,0 +1,14 @@
+import {RouteConfig, RouteGroup, Route} from 'brazier';
+
+export const routeConfig: RouteConfig = [
+    new Route('get', '/example/hello', 'exampleController', 'helloWorld'),
+    new RouteGroup(
+        [
+            new Route('get', '/example/hello2', 'exampleController', 'helloWorld', {
+                'middleware': ['exampleMiddleware3'],
+            }),
+        ], {
+            'middleware': ['exampleMiddleware', 'exampleMiddleware2'],
+        }
+    ),
+];
