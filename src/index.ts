@@ -10,3 +10,4 @@ export {default as RouteGroup} from './routing/RouteGroup';
 export {default as Route} from './routing/Route';
 export {default as Router} from './routing/Router';
 export {default as AppConfig} from './type/AppConfig';
+export {default as ValidationRule} from './type/ValidationRule';

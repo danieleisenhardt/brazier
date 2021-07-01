@@ -15,9 +15,11 @@
     "build"
   ],
   "dependencies": {
-    "express": "^4.17.1",
+    "@types/validator": "^13.1.4",
     "awilix": "^4.3.4",
-    "awilix-express": "^4.0.0"
+    "awilix-express": "^4.0.0",
+    "express": "^4.17.1",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",

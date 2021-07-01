@@ -35,6 +35,10 @@ export default class Router {
             handlers.unshift((request: Request, response: Response, next: () => void) => {
                 const requestHandler = request.container.resolve(route.config.request);
 
+                if (requestHandler.validate(request, response) !== true) {
+                    return;
+                }
+
                 requestHandler.handle(request, response, next);
             });
         }
