@@ -33,18 +33,81 @@ cd functions
 npm -i @danieleisenhardt/brazier
 node_modules/brazier/script/init.js
 ```
+### Autoloading
+In `config/app.ts` is an array of folders that will be autoloaded recursively by Brazier. Classes from these folders can be used for dependency injection and in the routes defined in `config/route.ts`
+
+### Dependency injection
+Services can be injected in other classes such as controllers and requests. Here is a controller loading a class named `ExampleService`:
+```
+export default class ExampleController {
+    constructor(
+        private exampleService: ExampleService,
+    ) {
+    }
+    
+    ...
+}
+```
+It is important to name the private variable the same as the Service name, but starting with a lowercase character or Awilix autoloading will be unable to find it.
+
+### Routing
+TODO
 
 ### Controllers
-TODO
+Controllers are placed in the `controller` folder for the router to use.
 
 ### Requests
-TODO
+Requests are placed in the `request` folder. The router will handle the request before the controller function. This way validation and data tranformation can be executed before business logic.
+
+Brazier comes with built-in request validation by validator-js. Meaning validation can either be done through the handle() function, or the rules property:
+```
+import {ApiRequest, ValidationRule, Request, Response} from 'brazier';
+
+export default class ExampleRequest extends ApiRequest {
+
+    protected rules: {[key: string]: ValidationRule[]} = {
+        name: [['isLength', {max: 4}]]
+    };
+
+    async handle(request: Request, response: Response, next: () => void) {
+        if (request.body['name'] !== 'foo' && request.body['name'] !== 'bar') {
+            return this.respondWithError(response, 'name has to be either foo or bar');
+        }
+
+        next();
+    }
+}
+```
+The validations from the rules property are checked first, which saves on performance if the `handle()` function makes calls to a database or other external resource. 
 
 ### Middleware
+Middleware is placed in the `middleware` folder. In addition to a Request, routes can also have a variable amount of Middleware applied to them. These have a `handle()` function similar to requests and can be used to execute any code before the business logic in the controller.
+
+### Entities
 TODO
 
 ### Repositories
-TODO
+Repositories are provided by wovalle/fireorm as a way to comminicate with firestore. They are placed in the `repositories` folder, but have a slightly different syntax from the rest of the framework:
+```
+import {CustomRepository, getRepository} from 'fireorm';
+import {FirestoreRepository} from 'brazier';
+import Example from '../entity/Example';
+
+@CustomRepository(Example)
+class ExampleRepository extends FirestoreRepository<Example> {
+}
+
+export const exampleRepository = getRepository(Example) as ExampleRepository;
+```
+The `exampleRepository` can be only loaded without dependency injection:
+```
+import {exampleRepository} from '../repository/ExampleRepository';
+```
+This does mean Awilix autoloading will not contain repositories per request. 
+
+For this reason you should **never** put data properties within a repository (i.e. for caching) because these could end up being used by another request from a different end user.
 
 ### Transformers
+Transformers are placed in the `transformer` folder.
+
 TODO
