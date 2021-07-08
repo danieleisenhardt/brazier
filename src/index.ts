@@ -2,6 +2,8 @@ export {default as Brazier} from './Brazier';
 export {default as ApiMiddleware} from './class/ApiMiddleware';
 export {default as ApiRequest} from './class/ApiRequest';
 export {default as Entity} from './class/Entity';
+export {default as FirestoreEntity} from './class/FirestoreEntity';
+export {default as FirestoreRepository} from './class/FirestoreRepository';
 export {default as Transformer} from './class/Transformer';
 export {default as Request} from './routing/interface/Request';
 export {default as Response} from './routing/interface/Response';
