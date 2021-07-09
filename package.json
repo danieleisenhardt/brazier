@@ -1,6 +1,6 @@
 {
   "name": "@danieleisenhardt/brazier",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "description": "a NodeJs framework for Firebase functions",
   "license": "MIT",
   "repository": {
@@ -8,12 +8,10 @@
     "url": "git://github.com/danieleisenhardt/brazier"
   },
   "scripts": {
-    "build": "rimraf ./build && tsc && cp package.json build && cp -r ./src/template build && chmod a+x ./build/script/init.js"
+    "build": "rimraf ./build && tsc && cp package.json build && cp README.md build && cp LICENSE build && cp -r ./src/template build && chmod a+x ./build/script/init.js",
+    "release": "cd build && npm publish"
   },
   "main": "build/index.js",
-  "files": [
-    "build"
-  ],
   "dependencies": {
     "@firebase/testing": "^0.16.14",
     "@types/validator": "^13.1.4",

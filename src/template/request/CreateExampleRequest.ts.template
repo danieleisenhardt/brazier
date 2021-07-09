@@ -1,4 +1,4 @@
-import {ApiRequest, ValidationRule} from 'brazier';
+import {ApiRequest, ValidationRule} from '@danieleisenhardt/brazier';
 
 export default class CreateExampleRequest extends ApiRequest {
 

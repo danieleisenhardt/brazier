@@ -1,5 +1,5 @@
 import {CustomRepository, getRepository} from 'fireorm';
-import {FirestoreRepository} from 'brazier';
+import {FirestoreRepository} from '@danieleisenhardt/brazier';
 import Example from '../entity/Example';
 
 @CustomRepository(Example)

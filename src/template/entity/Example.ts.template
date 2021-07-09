@@ -1,4 +1,4 @@
-import {FirestoreEntity} from 'brazier';
+import {FirestoreEntity} from '@danieleisenhardt/brazier';
 import {Collection} from 'fireorm';
 
 @Collection()

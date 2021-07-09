@@ -1,4 +1,4 @@
-import {ApiRequest, ValidationRule, Request, Response} from 'brazier';
+import {ApiRequest, ValidationRule, Request, Response} from '@danieleisenhardt/brazier';
 import {exampleRepository} from '../repository/ExampleRepository';
 
 export default class UpdateExampleRequest extends ApiRequest {

@@ -1,4 +1,4 @@
-import {Transformer} from 'brazier';
+import {Transformer} from '@danieleisenhardt/brazier';
 import Example from '../entity/Example';
 
 export default class ExampleTransformer extends Transformer {

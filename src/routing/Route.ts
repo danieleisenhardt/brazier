@@ -4,7 +4,7 @@ export default class Route {
     public path: string;
     public controllerName: string;
     public methodName: string;
-    public config?: {
+    public config: {
         request?: string,
         middleware?: string[]
     };

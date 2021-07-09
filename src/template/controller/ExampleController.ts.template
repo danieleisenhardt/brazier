@@ -1,4 +1,4 @@
-import {Request, Response} from 'brazier';
+import {Request, Response} from '@danieleisenhardt/brazier';
 import Example from '../entity/Example';
 import {exampleRepository} from '../repository/ExampleRepository';
 import ExampleTransformer from '../transformer/ExampleTransformer';

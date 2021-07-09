@@ -1,4 +1,4 @@
-import {RouteConfig, RouteGroup, Route} from 'brazier';
+import {RouteConfig, RouteGroup, Route} from '@danieleisenhardt/brazier';
 
 export const routeConfig: RouteConfig = [
     new Route('get', '/example', 'exampleController', 'index'),

@@ -1,4 +1,4 @@
-import {ApiMiddleware, Request, Response} from 'brazier';
+import {ApiMiddleware, Request, Response} from '@danieleisenhardt/brazier';
 
 export default class ExampleMiddleware extends ApiMiddleware {
     public async handle(request: Request, response: Response, next: () => void) {

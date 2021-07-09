@@ -27,6 +27,11 @@ firebase init
 
 *Choose Typescript when asked which language you want to use.*
 
+Add the following to the `compilerOptions` in `functions/tsconfig.json`:
+```
+"experimentalDecorators": true
+```
+
 After this is done go to the functions dir created by Firebase CLI and install brazier:
 ```
 cd functions
