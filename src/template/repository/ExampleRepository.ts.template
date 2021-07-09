@@ -1,0 +1,9 @@
+import {CustomRepository, getRepository} from 'fireorm';
+import {FirestoreRepository} from 'brazier';
+import Example from '../entity/Example';
+
+@CustomRepository(Example)
+class ExampleRepository extends FirestoreRepository<Example> {
+}
+
+export const exampleRepository = getRepository(Example) as ExampleRepository;

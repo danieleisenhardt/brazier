@@ -1,0 +1,10 @@
+import {ApiRequest, ValidationRule} from 'brazier';
+
+export default class CreateExampleRequest extends ApiRequest {
+
+    protected rules: {[key: string]: ValidationRule[]} = {
+        firstName: [['isLength', {min: 4, max: 30}]],
+        lastName: [['isLength', {min: 4, max: 30}]],
+        password: [['isLength', {min: 8, max: 30}]]
+    };
+}

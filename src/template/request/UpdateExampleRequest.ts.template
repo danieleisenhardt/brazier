@@ -1,0 +1,25 @@
+import {ApiRequest, ValidationRule, Request, Response} from 'brazier';
+import {exampleRepository} from '../repository/ExampleRepository';
+
+export default class UpdateExampleRequest extends ApiRequest {
+
+    protected rules: {[key: string]: ValidationRule[]} = {
+        firstName: [['isLength', {min: 4, max: 30}]],
+        lastName: [['isLength', {min: 4, max: 30}]],
+    };
+
+    /**
+     * This pattern should not be used in an actual Brazier application and is for demonstration purposes only:
+     * - having the same function in two ApiRequest classes is not DRY
+     * - retrieving the same model twice within one request can be easily avoided with a service class
+     */
+    public async handle(request: Request, response: Response, next: () => void) {
+        const example = await exampleRepository.findById(request.params.id);
+
+        if (example === null) {
+            return this.respondWithError(response, `no Example exists with id: ${request.params.id}`, 404);
+        }
+
+        next();
+    }
+}

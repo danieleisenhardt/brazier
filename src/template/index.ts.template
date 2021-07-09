@@ -1,16 +1,10 @@
 import * as functions from 'firebase-functions';
-import * as admin from 'firebase-admin';
 import {Brazier} from 'brazier';
 import {appConfig} from './config/app';
 import {routeConfig} from './config/route';
 
 const serviceAccount = require(appConfig.serviceAccountPath);
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: appConfig.databaseURL,
-});
-
-const app = new Brazier(appConfig, routeConfig);
+const app = new Brazier(appConfig, routeConfig, serviceAccount);
 
 export const api = functions.https.onRequest(app.getApi());

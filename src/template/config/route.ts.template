@@ -1,14 +1,15 @@
 import {RouteConfig, RouteGroup, Route} from 'brazier';
 
 export const routeConfig: RouteConfig = [
-    new Route('get', '/example/hello', 'exampleController', 'helloWorld'),
+    new Route('get', '/example', 'exampleController', 'index'),
     new RouteGroup(
         [
-            new Route('get', '/example/hello2', 'exampleController', 'helloWorld', {
-                'middleware': ['exampleMiddleware3'],
-            }),
+            new Route('post', '/example', 'exampleController', 'create', {'request': 'createExampleRequest'}),
+            new Route('get', '/example/:id', 'exampleController', 'read', {'request': 'readExampleRequest'}),
+            new Route('put', '/example/:id', 'exampleController', 'update', {'request': 'updateExampleRequest'}),
+            new Route('delete', '/example/:id', 'exampleController', 'delete'),
         ], {
-            'middleware': ['exampleMiddleware', 'exampleMiddleware2'],
+            'middleware': ['exampleMiddleware'],
         }
     ),
 ];

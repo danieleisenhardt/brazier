@@ -1,0 +1,12 @@
+import {Transformer} from 'brazier';
+import Example from '../entity/Example';
+
+export default class ExampleTransformer extends Transformer {
+    public transform(example: Example, context = 'anyone'): { [key: string]: any } {
+        return {
+            id: example.id,
+            name: example.firstName + ' ' + example.lastName,
+            description: example.description,
+        };
+    }
+}

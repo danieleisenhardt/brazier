@@ -1,0 +1,11 @@
+import {FirestoreEntity} from 'brazier';
+import {Collection} from 'fireorm';
+
+@Collection()
+export default class Example extends FirestoreEntity {
+    id!: string;
+    firstName!: string;
+    lastName!: string;
+    password!: string;
+    description: string | undefined;
+}

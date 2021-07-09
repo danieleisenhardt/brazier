@@ -1,11 +1,56 @@
 import {Request, Response} from 'brazier';
+import Example from '../entity/Example';
+import {exampleRepository} from '../repository/ExampleRepository';
+import ExampleTransformer from '../transformer/ExampleTransformer';
 
 export default class ExampleController {
     constructor(
+        private exampleTransformer: ExampleTransformer
     ) {
     }
 
-    public async helloWorld(request: Request, response: Response) {
-        response.json({message: 'Hello World!'});
+    public async index(request: Request, response: Response) {
+        const examples = await exampleRepository.find();
+
+        response.json({examples: this.exampleTransformer.transformCollection(examples)});
+    }
+
+    public async create(request: Request, response: Response) {
+        const example = new Example();
+        example.firstName = request.body.firstName;
+        example.lastName = request.body.lastName;
+        example.password = request.body.password;
+        if (typeof request.body.description === 'string') {
+            example.description = request.body.description;
+        }
+
+        await exampleRepository.save(example);
+
+        response.json({example: this.exampleTransformer.transform(example)});
+    }
+
+    public async read(request: Request, response: Response) {
+        const example = await exampleRepository.findById(request.params.id);
+
+        response.json({example: this.exampleTransformer.transform(example)});
+    }
+
+    public async update(request: Request, response: Response) {
+        const example = await exampleRepository.findById(request.params.id);
+        example.firstName = request.body.firstName;
+        example.lastName = request.body.lastName;
+        if (typeof request.body.description === 'string') {
+            example.description = request.body.description;
+        }
+
+        await exampleRepository.save(example);
+
+        response.json({example: this.exampleTransformer.transform(example)});
+    }
+
+    public async delete(request: Request, response: Response) {
+        await exampleRepository.delete(request.params.id);
+
+        response.json({success: true});
     }
 }
