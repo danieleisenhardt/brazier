@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-if (process.cwd().split('/').pop() !== 'functions') {
+const path = require('path')
+
+if (process.cwd().split(path.sep).pop() !== 'functions') {
     console.error('Please run this installer from the "functions" directory of your Firebase project');
     process.exit();
 }
