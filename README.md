@@ -31,7 +31,7 @@ After this is done go to the functions dir created by Firebase CLI and install b
 ```
 cd functions
 npm i @danieleisenhardt/brazier
-node_modules/brazier/script/init.js
+node_modules/@danieleisenhardt/brazier/script/init.js
 ```
 ### Autoloading
 In `config/app.ts` is an array of folders that will be autoloaded recursively by Brazier. Classes from these folders can be used for dependency injection and in the routes defined in `config/route.ts`
