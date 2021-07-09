@@ -30,7 +30,7 @@ firebase init
 After this is done go to the functions dir created by Firebase CLI and install brazier:
 ```
 cd functions
-npm -i @danieleisenhardt/brazier
+npm i @danieleisenhardt/brazier
 node_modules/brazier/script/init.js
 ```
 ### Autoloading
