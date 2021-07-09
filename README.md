@@ -36,6 +36,12 @@ node_modules/brazier/script/init.js
 ### Autoloading
 In `config/app.ts` is an array of folders that will be autoloaded recursively by Brazier. Classes from these folders can be used for dependency injection and in the routes defined in `config/route.ts`
 
+### Routing
+Routes are defined in `config/route.ts` which exports an array of Route and RouteGroup objects. 
+The latter can contain an array of Routes and RouteGroups enabling nested groups.
+
+Routes take a method, path, controllerName, and methodName parameter as well as an optional config parameter with can contain the name of a Request object and an array names of Middleware.
+
 ### Dependency injection
 Services can be injected in other classes such as controllers and requests. Here is a controller loading a class named `ExampleService`:
 ```
@@ -49,9 +55,6 @@ export default class ExampleController {
 }
 ```
 It is important to name the private variable the same as the Service name, but starting with a lowercase character or Awilix autoloading will be unable to find it.
-
-### Routing
-TODO
 
 ### Controllers
 Controllers are placed in the `controller` folder for the router to use.
@@ -84,7 +87,7 @@ The validations from the rules property are checked first, which saves on perfor
 Middleware is placed in the `middleware` folder. In addition to a Request, routes can also have a variable amount of Middleware applied to them. These have a `handle()` function similar to requests and can be used to execute any code before the business logic in the controller.
 
 ### Entities
-TODO
+Entities are placed in the `entity` folder. They can be transformed by transformers and their child class `FirestoreEntity` is used by repositories.
 
 ### Repositories
 Repositories are provided by wovalle/fireorm as a way to comminicate with firestore. They are placed in the `repositories` folder, but have a slightly different syntax from the rest of the framework:
@@ -108,6 +111,5 @@ This does mean Awilix autoloading will not contain repositories per request.
 For this reason you should **never** put data properties within a repository (i.e. for caching) because these could end up being used by another request from a different end user.
 
 ### Transformers
-Transformers are placed in the `transformer` folder.
-
-TODO
+Transformers are placed in the `transformer` folder. 
+They are used by Controllers to generate output for API responses. This way data can be transformed and/or obfuscated to send only what is useful and secure to API consumers. 
