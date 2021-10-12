@@ -7,6 +7,7 @@ import RouteConfig from './routing/type/RouteConfig';
 import AppConfig from './type/AppConfig';
 import * as fireorm from 'fireorm';
 import * as firestore from './firestore/firestore';
+import cors from 'cors';
 
 export default class Brazier {
     private readonly express: express.Express;
@@ -21,6 +22,10 @@ export default class Brazier {
         const db = firestore.init(serviceAccount.project_id === undefined ? 'emulator' : serviceAccount.project_id);
 
         this.express = express.default();
+
+        if (appConfig.useCors) {
+            this.express.use(cors());
+        }
 
         //@ts-ignore
         fireorm.initialize(db);

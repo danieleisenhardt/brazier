@@ -13,5 +13,6 @@ export const appConfig: AppConfig = {
         buildDir + '/request/**/*.js',
         buildDir + '/service/**/*.js',
         buildDir + '/transformer/**/*.js',
-    ]
+    ],
+    useCors: false
 };

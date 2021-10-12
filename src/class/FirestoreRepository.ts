@@ -1,5 +1,5 @@
 import {BaseFirestoreRepository} from 'fireorm';
-import {PartialBy} from 'fireorm/lib/src/types';
+import {PartialBy} from 'fireorm';
 import FirestoreEntity from './FirestoreEntity';
 
 export default class FirestoreRepository2<T extends FirestoreEntity> extends BaseFirestoreRepository<any> {
