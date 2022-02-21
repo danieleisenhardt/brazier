@@ -1,4 +1,5 @@
 import {Express} from 'express';
+import Brazier from '../Brazier';
 import Request from './interface/Request';
 import Response from './interface/Response';
 import Route from './Route';
@@ -21,7 +22,7 @@ export default class Router {
     private makeRoute(route: Route, app: Express) {
         const handlers: any = [
             (request: Request, response: Response) => {
-                const controller = request.container.resolve(route.controllerName);
+                const controller = request.container.resolve(Brazier.lowerCaseFirst(route.controllerName));
 
                 if (typeof controller[route.methodName] !== 'function') {
                     throw new Error(`missing method ${route.controllerName}.${route.methodName}`);
@@ -31,9 +32,9 @@ export default class Router {
             },
         ];
 
-        if (route.config.request !== undefined) {
+        if (typeof route.config.request === 'string') {
             handlers.unshift((request: Request, response: Response, next: () => void) => {
-                const requestHandler = request.container.resolve(route.config.request);
+                const requestHandler = request.container.resolve(Brazier.lowerCaseFirst(route.config.request as string));
 
                 if (requestHandler.validate(request, response) !== true) {
                     return;
@@ -46,7 +47,7 @@ export default class Router {
         if (route.config.middleware !== undefined) {
             route.config.middleware.reverse().forEach((middlewareName) => {
                 handlers.unshift((request: Request, response: Response, next: () => void) => {
-                    const middlewareHandler = request.container.resolve(middlewareName);
+                    const middlewareHandler = request.container.resolve(Brazier.lowerCaseFirst(middlewareName));
 
                     middlewareHandler.handle(request, response, next);
                 });

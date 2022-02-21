@@ -8,3 +8,7 @@ const serviceAccount = require(appConfig.serviceAccountPath);
 const app = new Brazier(appConfig, routeConfig, serviceAccount);
 
 export const api = functions.https.onRequest(app.getApi());
+
+// commands can be used for pubsub functions
+const command = app.getCommand('ExampleCommand');
+command();

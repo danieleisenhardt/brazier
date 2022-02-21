@@ -15,6 +15,14 @@ if( !fs.existsSync(process.cwd() + '/src/config') ) {
 fs.copyFileSync(__dirname + '/../template/config/app.ts.template', process.cwd() + '/src/config/app.ts');
 fs.copyFileSync(__dirname + '/../template/config/route.ts.template', process.cwd() + '/src/config/route.ts');
 
+if( !fs.existsSync(process.cwd() + '/src/command') ) {
+    fs.mkdirSync(process.cwd() + '/src/command');
+}
+fs.copyFileSync(
+    __dirname + '/../template/controller/ExampleCommand.ts.template',
+    process.cwd() + '/src/controller/ExampleCommand.ts'
+);
+
 if( !fs.existsSync(process.cwd() + '/src/controller') ) {
     fs.mkdirSync(process.cwd() + '/src/controller');
 }

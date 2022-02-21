@@ -20,5 +20,7 @@ export default class ContainerProvider {
         );
 
         express.use(scopePerRequest(container));
+
+        return container;
     }
 }

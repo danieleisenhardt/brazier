@@ -7,6 +7,7 @@ export const appConfig: AppConfig = {
     databaseURL: 'https://INSERT_YOUR_APP_NAME_HERE.firebaseio.com',
     buildDir: buildDir,
     autoloadPaths: [
+        buildDir + '/command/**/*.js',
         buildDir + '/controller/**/*.js',
         buildDir + '/middleware/**/*.js',
         buildDir + '/repository/**/*.js',

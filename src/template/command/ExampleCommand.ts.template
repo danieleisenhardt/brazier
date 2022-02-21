@@ -1,0 +1,7 @@
+import {Command} from '@danieleisenhardt/brazier';
+
+export default class ExampleCommand implements Command {
+    async handle(): Promise<void> {
+        console.log('TestCommand was run at', new Date());
+    }
+}
