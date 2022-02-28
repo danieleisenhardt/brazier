@@ -1,3 +1,4 @@
+import bodyParser from 'body-parser';
 import * as express from 'express';
 import * as admin from 'firebase-admin';
 import ContainerProvider from './autoload/ContainerProvider';
@@ -25,6 +26,8 @@ export default class Brazier {
 
         this.express = express.default();
 
+        this.express.use(bodyParser.json());
+
         if (appConfig.useCors) {
             this.express.use(cors());
         }
@@ -46,7 +49,9 @@ export default class Brazier {
     getCommand(name: string) {
         const command: Command = this.container.resolve(Brazier.lowerCaseFirst(name));
 
-        return () => {command.handle()};
+        return () => {
+            command.handle()
+        };
     }
 
     static lowerCaseFirst(value: string) {

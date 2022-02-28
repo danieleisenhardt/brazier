@@ -1,6 +1,6 @@
 {
   "name": "@danieleisenhardt/brazier",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "a NodeJs framework for Firebase functions",
   "license": "MIT",
   "repository": {
@@ -17,6 +17,7 @@
     "@types/validator": "^13.1.4",
     "awilix": "^4.3.4",
     "awilix-express": "^4.0.0",
+    "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase": "^7.10.0",
@@ -27,6 +28,7 @@
     "validator": "^13.6.0"
   },
   "devDependencies": {
+    "@types/body-parser": "^1.19.2",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.11",
     "@types/node": "^15.0.2",
