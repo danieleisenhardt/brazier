@@ -19,8 +19,8 @@ if( !fs.existsSync(process.cwd() + '/src/command') ) {
     fs.mkdirSync(process.cwd() + '/src/command');
 }
 fs.copyFileSync(
-    __dirname + '/../template/controller/ExampleCommand.ts.template',
-    process.cwd() + '/src/controller/ExampleCommand.ts'
+    __dirname + '/../template/command/ExampleCommand.ts.template',
+    process.cwd() + '/src/command/ExampleCommand.ts'
 );
 
 if( !fs.existsSync(process.cwd() + '/src/controller') ) {
