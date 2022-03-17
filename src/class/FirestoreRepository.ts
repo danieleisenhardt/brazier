@@ -2,7 +2,7 @@ import {BaseFirestoreRepository} from 'fireorm';
 import {PartialBy} from 'fireorm';
 import FirestoreEntity from './FirestoreEntity';
 
-export default class FirestoreRepository2<T extends FirestoreEntity> extends BaseFirestoreRepository<any> {
+export default class FirestoreRepository<T extends FirestoreEntity> extends BaseFirestoreRepository<T> {
     async save(item: PartialBy<T, 'id'>) {
         item.updatedAt = Date.now();
 

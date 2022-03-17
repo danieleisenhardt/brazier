@@ -1,6 +1,6 @@
 {
   "name": "@danieleisenhardt/brazier",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "a NodeJs framework for Firebase functions",
   "license": "MIT",
   "repository": {
