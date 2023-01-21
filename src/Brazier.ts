@@ -46,6 +46,10 @@ export default class Brazier {
         return this.express;
     }
 
+    getContainer() {
+        return this.container;
+    }
+
     getCommand(name: string) {
         const command: Command = this.container.resolve(Brazier.lowerCaseFirst(name));
 
